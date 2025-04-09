@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: backend
+        working-directory: backend  # Sets default directory for all run steps
 
     steps:
       - name: Checkout code
@@ -20,8 +20,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Make mvnw executable
-        run: chmod +x mvnw
+      - name: Make mvnw executable and debug
+        run: |
+          chmod +x mvnw
+          ls -l mvnw  # Check permissions in logs
+          file mvnw   # Verify file type
 
       - name: Build Backend JAR
         run: ./mvnw clean package -B
