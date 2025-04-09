@@ -14,9 +14,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Make mvnw executable
-        run: cd backend && chmod +x ./mvnw  # Adds execute permission
+        run: |
+          cd backend
+          chmod +x mvnw  # Use relative path without ./
+          ls -l mvnw    # Verify permissions (for debugging)
       - name: Build Backend JAR
-        run: cd backend && ./mvnw clean package
+        run: cd backend && ./mvnw clean package -B  # -B for non-interactive mode
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
