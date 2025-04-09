@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: backend  # Sets default directory for all run steps
+        working-directory: backend
 
     steps:
       - name: Checkout code
@@ -23,11 +23,11 @@ jobs:
       - name: Make mvnw executable and debug
         run: |
           chmod +x mvnw
-          ls -l mvnw  # Check permissions in logs
-          file mvnw   # Verify file type
+          ls -l mvnw
+          file mvnw
 
       - name: Build Backend JAR
-        run: ./mvnw clean package -B
+        run: ./mvnw clean package -B -DskipTests  # Skips tests to avoid DB dependency
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
