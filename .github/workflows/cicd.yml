@@ -1,0 +1,26 @@
+name: Rent a Buddy CI/CD
+on: [push]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with: { java-version: '17' }
+      - name: Build Backend
+        run: cd backend && ./mvnw clean package
+      - name: Build & Push Backend Docker
+        run: |
+          docker build -t jaysagar/rent-a-buddy-backend:latest backend/
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push jaysagar/rent-a-buddy-backend:latest
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build & Push Frontend Docker
+        run: |
+          docker build -t jaysagar/rent-a-buddy-frontend:latest frontend/
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push jaysagar/rent-a-buddy-frontend:latest
