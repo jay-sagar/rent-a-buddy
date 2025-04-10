@@ -6,7 +6,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("https://localhost:8080/api/users")
+    axios.get('https://rent-a-buddy-backend.onrender.com/api/users')
     .then(response => setUsers(response.data))
     .catch(error => console.error("Error fetching users:", error))
   }, [])
