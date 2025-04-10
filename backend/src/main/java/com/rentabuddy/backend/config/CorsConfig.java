@@ -9,8 +9,8 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("https://rent-a-buddy.vercel.app/")
+        registry.addMapping("/**") // Apply to all endpoints
+                .allowedOrigins("https://rent-a-buddy.vercel.app") // Exact frontend URL
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
