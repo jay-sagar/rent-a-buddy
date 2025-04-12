@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin
+@CrossOrigin(origins = "https://rent-a-buddy.vercel.app/", methods = {RequestMethod.GET, RequestMethod.OPTIONS}, allowedHeaders = "*", allowCredentials = "true")
 public class UserController {
     @Autowired
     UserRepository userRepository;
