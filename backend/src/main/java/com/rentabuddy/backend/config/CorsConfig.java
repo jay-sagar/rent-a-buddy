@@ -12,11 +12,10 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        logger.info("CORS configuration applied for origins: https://www.rent-a-buddy.vercel.app, http://localhost:3000");
+        logger.info("Testing CORS with wildcard");
         registry.addMapping("/**")
-                .allowedOrigins("https://www.rent-a-buddy.vercel.app", "http://localhost:3000")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .allowCredentials(true);
+                .allowedOrigins("*") // Temporary, insecure test
+                .allowedMethods("GET", "OPTIONS")
+                .allowedHeaders("*");
     }
 }
