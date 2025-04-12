@@ -16,10 +16,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://rent-a-buddy.vercel.app") // Exact Vercel URL
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Explicit methods
-                        .allowedHeaders("*") // Allow all headers
-                        .allowCredentials(true); // Allow credentials if needed
+                        .allowedOrigins("https://rent-a-buddy.vercel.app")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
