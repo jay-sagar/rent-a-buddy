@@ -8,7 +8,7 @@
 //    @Override
 //    public void addCorsMappings(CorsRegistry registry) {
 //        registry.addMapping("/**")
-//                .allowedOrigins("https://rent-a-buddy.vercel.app/")
+//                .allowedOrigins("https://www.rent-a-buddy.vercel.app/")
 //                .allowedMethods("GET, POST, PUT, DELETE, OPTIONS");
 //    }
 //}

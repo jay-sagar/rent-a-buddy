@@ -32,6 +32,11 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/rent-a-buddy-backend:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/rent-a-buddy-backend:latest
+      - name: Trigger Render Deploy
+        run: |
+          curl -X GET ${{ secrets.RENDER_DEPLOY_HOOK}}
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK}}
   frontend:
     runs-on: ubuntu-latest
     steps:
